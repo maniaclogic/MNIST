@@ -1,11 +1,11 @@
 """ Neural Network for classic MNIST Dataset """
-from matplotlib import pyplot as plt
 import numpy as np
 import keras
 from keras.datasets import mnist
-from keras.models import Sequential
 from keras.layers import Dense, Flatten
 from keras.layers.convolutional import Conv2D
+from keras.models import Sequential
+from matplotlib import pyplot as plt
 
 (X_TRAIN, Y_TRAIN), (X_TEST, Y_TEST) = mnist.load_data()
 
