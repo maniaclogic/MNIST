@@ -6,6 +6,9 @@ from keras.layers import Dense, Flatten
 from keras.layers.convolutional import Conv2D
 from keras.models import Sequential
 from matplotlib import pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+
 
 (X_TRAIN, Y_TRAIN), (X_TEST, Y_TEST) = mnist.load_data()
 
@@ -48,4 +51,9 @@ M.compile(loss='categorical_crossentropy',
           metrics=['accuracy'])
 M.fit(X_T_PREP, Y_T_PREP, epochs=10)
 
-Y_PRED = M.predict(X_TEST_PREP)
+Y_PRED = M.predict_classes(X_TEST_PREP)
+C = confusion_matrix(Y_TEST, Y_PRED)
+print(C)
+plt.figure(figsize=[10.0, 7.5])
+sns.heatmap(C)
+plt.show()
